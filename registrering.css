@@ -17,10 +17,11 @@
 }
 .modul input {
   width: 100%;
-  padding: 8px;
+  padding: 10px;
   border-radius: 6px;
   border: none;
   margin-top: 5px;
+  font-size: 16px;
 }
 .modul button {
   background: #00ffe1;
@@ -29,5 +30,9 @@
   border: none;
   border-radius: 10px;
   cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+}
+#registrering-status {
   font-weight: bold;
 }
