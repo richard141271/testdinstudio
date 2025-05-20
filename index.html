@@ -2,10 +2,11 @@
 <html lang="no">
 <head>
   <meta charset="UTF-8">
-  <title>AI Innovate AS</title>
+  <title>AI Innovate AS – v3.1</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="profil.css">
   <link rel="stylesheet" href="rekruttering.css">
+  <link rel="stylesheet" href="kunst.css">
   <style>
     body {
       background: #121212;
@@ -51,6 +52,7 @@
     .skjerm { display: none; }
     .vis { display: block; }
   </style>
+<link rel="stylesheet" href="jobb.css">
 </head>
 <body>
 
@@ -93,22 +95,47 @@
   </div>
 </div>
 
+<div id="kunst" class="skjerm">
+  <div class="kunst-container">
+    <h2>Last opp kunstverk</h2>
+    <input type="file" id="filOpplasting" accept="image/*" />
+    <textarea id="beskrivelse" placeholder="Beskrivelse av kunstverket"></textarea>
+    <button onclick="lagreKunst()">Lagre kunst</button>
+    <div id="status"></div>
+    <h3>Dine kunstverk</h3>
+    <div id="kunstGalleri"></div>
+  </div>
+</div>
+
 <footer class="bunnmeny">
   <button onclick="visModul('registrering')">Registrering</button>
   <button onclick="visModul('profil')">Profil</button>
   <button onclick="visModul('rekruttering')">Rekruttering</button>
-  <button onclick="alert('Kunstmodul kommer')">Kunst</button>
-  <button onclick="alert('Jobbmodul kommer')">Jobb</button>
+  <button onclick="visModul('kunst')">Kunst</button>
+  <button onclick="visModul('jobb')">Jobb</button>
 </footer>
+<div id="jobb" class="skjerm">
+<div class="jobb-container">
+  <h2>Jobb hos oss</h2>
+  <p>Som medlem av AI Innovate kan du starte å jobbe umiddelbart.</p>
+  <p>Første oppdrag: <strong>Rekrutter 3 personer</strong></p>
+  <button onclick="startOppdrag()">Start nå</button>
+  <div id="jobbstatus"></div>
+
+  
+</div>
+
 
 <script src="profil.js"></script>
 <script src="rekruttering.js"></script>
+<script src="kunst.js"></script>
 <script>
 function visModul(modulnavn) {
   document.querySelectorAll(".skjerm").forEach(el => el.classList.remove("vis"));
   document.getElementById(modulnavn).classList.add("vis");
   if (modulnavn === "profil") visProfil();
   if (modulnavn === "rekruttering") oppdaterRekruttering();
+  if (modulnavn === "kunst") visGalleri();
 }
 
 function registrerBruker() {
@@ -135,5 +162,6 @@ function registrerBruker() {
   document.getElementById("status").innerText = "Registrering lagret!";
 }
 </script>
+<script src="jobb.js"></script>
 </body>
 </html>
