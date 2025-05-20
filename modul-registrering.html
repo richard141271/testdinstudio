@@ -1,12 +1,19 @@
 <div class="modul registrering">
-  <h2>📝 Bli medlem</h2>
+  <h2>📝 Registrering</h2>
   <form id="registreringsskjema">
-    <label>Navn:<br><input type="text" id="navn" required /></label><br>
-    <label>E-post:<br><input type="email" id="epost" required /></label><br>
-    <label>Telefon:<br><input type="tel" id="telefon" required pattern="[0-9]{8}" /></label><br>
-    <label>Passord:<br><input type="password" id="passord" required minlength="6" /></label><br>
-    <label><input type="checkbox" id="samtykke" required /> Jeg godtar vilkårene</label><br><br>
+    <input type="text" id="fornavn" placeholder="Fornavn" required />
+    <input type="text" id="etternavn" placeholder="Etternavn" required />
+    <input type="email" id="epost" placeholder="E-post" required />
+    <input type="tel" id="telefon" placeholder="Telefon (valgfritt)" />
+    <input type="text" id="vervetAv" placeholder="Hvem vervet deg?" />
+    <input type="text" id="kontonummer" placeholder="Kontonummer (valgfritt)" />
+    <input type="password" id="passord" placeholder="Passord" required />
+    <input type="password" id="passord2" placeholder="Gjenta passord" required />
+    <label style="display: flex; align-items: center; gap: 8px; margin: 10px 0;">
+      <input type="checkbox" id="godtaVilkår" required />
+      Jeg godtar <a href="#vilkar" onclick="visModul('modul-vilkar')" style="color:#00ffe1;text-decoration:underline;">vilkårene</a>.
+    </label>
     <button type="submit">Registrer meg</button>
+    <div id="registreringsmelding"></div>
   </form>
-  <p id="registrering-status" style="margin-top: 20px;"></p>
 </div>
