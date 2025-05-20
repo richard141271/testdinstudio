@@ -1,5 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
   const skjema = document.getElementById("registreringsskjema");
+  const statusEl = document.getElementById("registrering-status");
+
+  // Hindre dobbel registrering
+  const eksisterende = localStorage.getItem("registrertBruker");
+  if (eksisterende) {
+    const bruker = JSON.parse(eksisterende);
+    statusEl.innerText = "✅ Du er allerede registrert som " + bruker.navn + ".";
+    statusEl.style.color = "lightgreen";
+    skjema.style.display = "none";
+    return;
+  }
+
   skjema.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -7,11 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const epost = document.getElementById("epost").value.trim();
     const telefon = document.getElementById("telefon").value.trim();
     const passord = document.getElementById("passord").value;
+    const samtykke = document.getElementById("samtykke").checked;
 
-    const statusEl = document.getElementById("registrering-status");
-
-    if (!navn || !epost || !telefon || !passord) {
-      statusEl.innerText = "⚠️ Vennligst fyll ut alle felt.";
+    if (!navn || !epost || !telefon || !passord || !samtykke) {
+      statusEl.innerText = "⚠️ Vennligst fyll ut alle felt og godta vilkårene.";
       statusEl.style.color = "orange";
       return;
     }
@@ -31,8 +42,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const bruker = { navn, epost, telefon, passord };
     localStorage.setItem("registrertBruker", JSON.stringify(bruker));
 
-    statusEl.innerText = "✅ Registrering fullført!";
+    statusEl.innerText = "✅ Registrering fullført! Du er nå innlogget som " + navn + ".";
     statusEl.style.color = "lightgreen";
     skjema.reset();
+
+    // Automatisk naviger til profil
+    setTimeout(() => {
+      if (typeof visModul === "function") {
+        visModul("modul-profil");
+      }
+    }, 1500);
   });
 });

@@ -15,13 +15,20 @@
   margin-bottom: 15px;
   color: #f0f0f0;
 }
-.modul input {
+.modul input[type="text"],
+.modul input[type="email"],
+.modul input[type="tel"],
+.modul input[type="password"] {
   width: 100%;
   padding: 10px;
   border-radius: 6px;
   border: none;
   margin-top: 5px;
   font-size: 16px;
+}
+.modul input[type="checkbox"] {
+  transform: scale(1.2);
+  margin-right: 10px;
 }
 .modul button {
   background: #00ffe1;
