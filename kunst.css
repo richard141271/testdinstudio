@@ -1,0 +1,20 @@
+.modul.kunst {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #1a1a2e;
+  border-radius: 12px;
+  color: #f0f0f0;
+  font-family: 'Segoe UI', sans-serif;
+  box-shadow: 0 0 20px rgba(0,255,225,0.1);
+}
+.modul.kunst h2 {
+  color: #00ffe1;
+}
+.modul.kunst h3 {
+  color: #ffd700;
+}
+ul {
+  list-style-type: "🖌️ ";
+  padding-left: 20px;
+}
