@@ -1,0 +1,23 @@
+.modul {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #1a1a2e;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,255,225,0.1);
+  font-family: 'Segoe UI', sans-serif;
+  color: #f0f0f0;
+}
+input, button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+}
+button {
+  background: #00ffe1;
+  font-weight: bold;
+  cursor: pointer;
+}
