@@ -165,3 +165,15 @@ function registrerBruker() {
 <script src="jobb.js"></script>
 </body>
 </html>
+<!-- Inkluder modulen -->
+<link rel="stylesheet" href="aurora.css">
+<script src="aurora.js"></script>
+
+<!-- Last inn Aurora-modulen -->
+<div id="app"></div>
+<script>
+  // Bytt ut dette med riktig modul-laster
+  fetch("modul-aurora.html")
+    .then(res => res.text())
+    .then(html => document.getElementById("app").innerHTML = html);
+</script>
