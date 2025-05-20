@@ -1,0 +1,33 @@
+.modul.registrering {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #1a1a2e;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,255,225,0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+.modul h2 {
+  color: #00ffe1;
+}
+.modul label {
+  display: block;
+  margin-bottom: 15px;
+  color: #f0f0f0;
+}
+.modul input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  margin-top: 5px;
+}
+.modul button {
+  background: #00ffe1;
+  color: #000;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
