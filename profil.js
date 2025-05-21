@@ -16,4 +16,7 @@ function visProfil() {
     <p><strong>Registrert:</strong> ${data.registrert}</p>
   `;
 }
+function visModul(modulnavn) {
+  alert("Du forsøkte å gå til: " + modulnavn + " – dette fungerer bare fullt i hovedappen.");
+}
 window.onload = visProfil;
