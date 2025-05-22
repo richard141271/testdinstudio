@@ -1,38 +1,66 @@
+
 <!DOCTYPE html>
 <html lang="no">
 <head>
   <meta charset="UTF-8" />
+  <title>AI Innovate AS – v3.13</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Innovate – App V3.6</title>
-  <link rel="stylesheet" href="registrering.css" />
-  <script src="registrering.js" defer></script>
+  <link rel="stylesheet" href="profil.css" />
+  <link rel="stylesheet" href="betaling.css" />
+  <style>
+    body { background: #121212; color: #f0f0f0; font-family: 'Segoe UI', sans-serif; padding-bottom: 100px; }
+    .container { max-width: 600px; margin: auto; padding: 20px; background: #1a1a2e; border-radius: 8px; }
+    input, button { width: 100%; margin-bottom: 10px; padding: 10px; border-radius: 5px; border: none; }
+    input { background: #2a2a3d; color: #f0f0f0; }
+    button { background: #00ffe1; color: #000; font-weight: bold; cursor: pointer; }
+    .bunnmeny { position: fixed; bottom: 0; left: 0; right: 0; background: #1f1f1f; padding: 10px; display: flex; justify-content: space-around; border-top: 2px solid #00ffe1; }
+    .skjerm { display: none; }
+    .vis { display: block; }
+  </style>
 </head>
-<body style="margin:0; background:#000; color:#fff; font-family:sans-serif;">
-  <div id="app" style="padding-bottom: 100px;"></div>
+<body>
 
-  <!-- HURTIGTILGANG FRA APP-MENYEN -->
-  <div id="app-bottom-menu" style="position: fixed; bottom: 0; left: 0; right: 0; height: 70px; background: #0f0f1a; border-top: 1px solid #222; display: flex; justify-content: space-around; align-items: center; box-shadow: 0 -2px 10px rgba(0,255,225,0.1); z-index: 1000;">
-    <a href="#registrering" onclick="visModul('modul-registrering')" style="color: #00ffe1; text-decoration: none; font-size: 18px;">📝 Registrering</a>
-    <a href="#profil" onclick="visModul('modul-profil')" style="color: #00ffe1; text-decoration: none; font-size: 18px;">👤 Profil</a>
-    <a href="#rekruttering" onclick="visModul('modul-rekruttering')" style="color: #00ffe1; text-decoration: none; font-size: 18px;">🔗 Rekruttering</a>
-    <a href="#kunst" onclick="visModul('modul-kunst')" style="color: #00ffe1; text-decoration: none; font-size: 18px;">🎨 Kunst</a>
-    <a href="#jobb" onclick="visModul('modul-jobb')" style="color: #00ffe1; text-decoration: none; font-size: 18px;">💼 Jobb</a>
-    <a href="#aurora" onclick="visModul('modul-aurora')" style="color: #00ffe1; text-decoration: none; font-size: 18px;">🤖 Aurora</a>
+<div id="profil" class="skjerm vis">
+  <div class="container">
+    <h2>Min Profil</h2>
+    <div id="profilinfo">Laster data...</div>
+    <div style="text-align:center; margin-top: 30px;">
+      <button onclick="visModul('kunst')">👉 Utforsk AI Innovate</button>
+    </div>
   </div>
+</div>
 
-  <script>
-    function visModul(modulnavn) {
-      fetch(modulnavn + '.html')
-        .then(res => res.text())
-        .then(html => {
-          document.getElementById('app').innerHTML = html;
-        })
-        .catch(() => {
-          document.getElementById('app').innerHTML = '<div style="padding: 40px; text-align: center;">🚧 Modulen <strong>' + modulnavn + '</strong> er ikke klar ennå.</div>';
-        });
-    }
+<div id="betaling" class="skjerm">
+  <div class="container">
+    <h2>Betaling</h2>
+    <p>Her kommer betalingssystemet for medlemskap og tjenester. Du vil kunne koble til Vipps, kortbetaling, eller ArtToken-balanse.</p>
+    <button onclick="alert('Betalingssystem kommer snart!')">🔒 Betal nå</button>
+    <div style="text-align:center; margin-top: 30px;">
+      <button onclick="visModul('kunst')">👉 Utforsk AI Innovate</button>
+    </div>
+  </div>
+</div>
 
-    visModul('modul-registrering');
-  </script>
+<div id="kunst" class="skjerm">
+  <div class="container">
+    <h2>Kunstmodul</h2>
+    <p>Kommer snart – her kan du laste opp og vise frem dine kunstverk.</p>
+  </div>
+</div>
+
+<footer class="bunnmeny">
+  <button onclick="visModul('profil')">Profil</button>
+  <button onclick="visModul('betaling')">Betaling</button>
+  <button onclick="visModul('kunst')">Kunst</button>
+</footer>
+
+<script src="profil.js"></script>
+<script>
+function visModul(modulnavn) {
+  document.querySelectorAll(".skjerm").forEach(el => el.classList.remove("vis"));
+  document.getElementById(modulnavn).classList.add("vis");
+  if (modulnavn === "profil") visProfil();
+}
+</script>
 </body>
 </html>
