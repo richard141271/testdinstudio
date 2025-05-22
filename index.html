@@ -2,20 +2,52 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-  <meta charset="UTF-8" />
-  <title>AI Innovate AS – v3.13</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="profil.css" />
-  <link rel="stylesheet" href="betaling.css" />
+  <meta charset="UTF-8">
+  <title>AI Innovate App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { background: #121212; color: #f0f0f0; font-family: 'Segoe UI', sans-serif; padding-bottom: 100px; }
-    .container { max-width: 600px; margin: auto; padding: 20px; background: #1a1a2e; border-radius: 8px; }
-    input, button { width: 100%; margin-bottom: 10px; padding: 10px; border-radius: 5px; border: none; }
-    input { background: #2a2a3d; color: #f0f0f0; }
-    button { background: #00ffe1; color: #000; font-weight: bold; cursor: pointer; }
-    .bunnmeny { position: fixed; bottom: 0; left: 0; right: 0; background: #1f1f1f; padding: 10px; display: flex; justify-content: space-around; border-top: 2px solid #00ffe1; }
-    .skjerm { display: none; }
-    .vis { display: block; }
+    body {
+      background: #121212;
+      color: #f0f0f0;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding-bottom: 100px;
+    }
+    .skjerm {
+      display: none;
+    }
+    .vis {
+      display: block;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      background: #1a1a2e;
+      border-radius: 8px;
+    }
+    button {
+      background: #00ffe1;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      cursor: pointer;
+      width: 100%;
+      margin: 5px 0;
+    }
+    .bunnmeny {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #1f1f1f;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px;
+      border-top: 2px solid #00ffe1;
+    }
   </style>
 </head>
 <body>
@@ -24,27 +56,30 @@
   <div class="container">
     <h2>Min Profil</h2>
     <div id="profilinfo">Laster data...</div>
-    <div style="text-align:center; margin-top: 30px;">
-      <button onclick="visModul('kunst')">👉 Utforsk AI Innovate</button>
-    </div>
+    <button onclick="visModul('betaling')">💳 Gå til betaling</button>
+    <button onclick="visModul('kunst')">🎨 Utforsk AI Innovate</button>
   </div>
 </div>
 
 <div id="betaling" class="skjerm">
   <div class="container">
     <h2>Betaling</h2>
-    <p>Her kommer betalingssystemet for medlemskap og tjenester. Du vil kunne koble til Vipps, kortbetaling, eller ArtToken-balanse.</p>
-    <button onclick="alert('Betalingssystem kommer snart!')">🔒 Betal nå</button>
-    <div style="text-align:center; margin-top: 30px;">
-      <button onclick="visModul('kunst')">👉 Utforsk AI Innovate</button>
-    </div>
+    <p>Her kommer betalingssystemet for medlemskap og tjenester. Du vil kunne koble til Vipps, kortbetaling, eller ArtToken-balansen.</p>
+    <button onclick="alert('Betalingssystem kommer snart!')">💳 Betal nå</button>
+    <button onclick="visModul('kunst')">🎨 Utforsk AI Innovate</button>
   </div>
 </div>
 
 <div id="kunst" class="skjerm">
   <div class="container">
-    <h2>Kunstmodul</h2>
-    <p>Kommer snart – her kan du laste opp og vise frem dine kunstverk.</p>
+    <h2>🎨 Last opp og registrer din kunst</h2>
+    <form id="kunstSkjema">
+      <label>Tittel:</label><input id="tittel" /><br>
+      <label>Verdi:</label><input id="verdi" /><br>
+      <label><input type="checkbox" id="lagNFT" /> Lag NFT</label><br>
+      <button type="submit">📤 Registrer kunstverk</button>
+    </form>
+    <div id="kunstBeholdning"></div>
   </div>
 </div>
 
@@ -54,13 +89,39 @@
   <button onclick="visModul('kunst')">Kunst</button>
 </footer>
 
-<script src="profil.js"></script>
 <script>
-function visModul(modulnavn) {
-  document.querySelectorAll(".skjerm").forEach(el => el.classList.remove("vis"));
-  document.getElementById(modulnavn).classList.add("vis");
-  if (modulnavn === "profil") visProfil();
-}
+  function visModul(modulnavn) {
+    document.querySelectorAll(".skjerm").forEach(el => el.classList.remove("vis"));
+    document.getElementById(modulnavn).classList.add("vis");
+    if (modulnavn === "profil") visProfil();
+  }
+
+  function visProfil() {
+    const data = JSON.parse(localStorage.getItem("registrertBruker"));
+    const container = document.getElementById("profilinfo");
+    if (!data) {
+      container.innerHTML = "<p>Ingen brukerdata funnet. Vennligst registrer deg først.</p>";
+      return;
+    }
+    container.innerHTML = `
+      <p><strong>Navn:</strong> ${data.fornavn || "undefined"} ${data.etternavn || "undefined"}</p>
+      <p><strong>E-post:</strong> ${data.epost}</p>
+      <p><strong>Telefon:</strong> ${data.telefon || 'Ikke oppgitt'}</p>
+      <p><strong>Vervet av:</strong> ${data.verv || 'Ingen'}</p>
+      <p><strong>Registrert:</strong> ${data.registrert || 'undefined'}</p>
+    `;
+  }
+
+  document.getElementById("kunstSkjema").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const tittel = document.getElementById("tittel").value;
+    const verdi = document.getElementById("verdi").value;
+    const lagNFT = document.getElementById("lagNFT").checked ? "✅" : "❌";
+    const beholdning = document.getElementById("kunstBeholdning");
+    beholdning.innerHTML += `<p>${tittel} – ${verdi} kr – NFT: ${lagNFT}</p>`;
+    this.reset();
+  });
 </script>
+
 </body>
 </html>
