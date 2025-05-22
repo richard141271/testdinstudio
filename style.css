@@ -1,0 +1,65 @@
+
+/* FILNAVN: style.css */
+body {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 40px 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-card {
+  background: #121223;
+  padding: 25px;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 420px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 255, 225, 0.2);
+}
+
+.avatar-section {
+  margin-bottom: 20px;
+}
+
+.avatar {
+  width: 80px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.rank {
+  color: #00ffe1;
+  font-weight: bold;
+}
+
+.info p, .rewards p {
+  margin: 8px 0;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 6px;
+  border-radius: 6px;
+  border: none;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+button {
+  background: #00ffe1;
+  border: none;
+  border-radius: 6px;
+  padding: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.logout {
+  margin-top: 20px;
+  background: #00ffe1;
+  width: 100%;
+}

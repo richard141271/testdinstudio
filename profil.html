@@ -1,42 +1,47 @@
 
-<!-- Ny og forbedret profilside for AI Innovate -->
-<div id="profil" class="skjerm vis">
-  <div class="container" style="max-width: 600px; margin: auto; padding: 30px; background: #101018; color: #f0f0f0; border-radius: 12px; box-shadow: 0 0 20px rgba(0, 255, 225, 0.2);">
-    <h2 style="color: #00ffe1; text-align: center; margin-bottom: 25px;">👤 Din profil</h2>
-
-    <form id="profilinfo" style="display: flex; flex-direction: column; gap: 12px;">
-      <label><strong>Navn:</strong><br><span id="navn" style="color: #ffffff;"></span></label>
-      <label><strong>E-post:</strong><br><span id="epost" style="color: #ffffff;"></span></label>
-      <label><strong>Telefon:</strong><br><span id="telefon" style="color: #ffffff;"></span></label>
-      <label><strong>Vervet av:</strong><br><span id="verv" style="color: #ffffff;"></span></label>
-      <label><strong>Kontonummer:</strong><br><span id="konto" style="color: #ffffff;"></span></label>
-      <label><strong>Registrert:</strong><br><span id="registrert" style="color: #ffffff;"></span></label>
-    </form>
-
-    <div style="margin-top: 30px; display: flex; flex-direction: column; gap: 12px;">
-      <button onclick="visModul('betaling')" style="padding: 12px; background: #00ffe1; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; color: #000;">💳 Gå til betaling</button>
-      <button onclick="visModul('kunst')" style="padding: 12px; background: #00ffe1; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; color: #000;">🎨 Utforsk AI Innovate</button>
+<!-- FILNAVN: profil.html -->
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <title>Din profil</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="profile-card">
+    <div class="avatar-section">
+      <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=profil" alt="Avatar" class="avatar">
+      <h2>👤 Din profil</h2>
+      <p class="rank">💠 Rang: Nybegynner</p>
     </div>
+
+    <div class="info">
+      <p><strong>Navn:</strong> Ola Nordmann</p>
+      <p><strong>E-post:</strong> ola@epost.no</p>
+      <p><strong>Telefon:</strong> 90012345</p>
+      <p><strong>Vervet av:</strong> Kari</p>
+      <p><strong>Kontonummer:</strong> 1234.56.78901</p>
+      <p><strong>Registrert:</strong> 22. mai 2025</p>
+    </div>
+
+    <div class="rewards">
+      <p>🎁 Neste premie tilgjengelig om: <span id="countdown">02:14:36</span></p>
+      <p>🔗 Din vervelenke:</p>
+      <input type="text" value="https://aiinnovate.no/r/ola123" id="refLink" readonly>
+      <button onclick="copyLink()">📋 Kopier lenke</button>
+    </div>
+
+    <button class="logout">🚪 Logg ut / Slett profil</button>
   </div>
-</div>
 
-<script>
-  function visModul(modulnavn) {
-    document.querySelectorAll(".skjerm").forEach(el => el.classList.remove("vis"));
-    document.getElementById(modulnavn).classList.add("vis");
-    if (modulnavn === "profil") visProfil();
-  }
-
-  function visProfil() {
-    const data = JSON.parse(localStorage.getItem("registrertBruker"));
-    if (!data) return;
-    document.getElementById("navn").textContent = `${data.fornavn || ''} ${data.etternavn || ''}`;
-    document.getElementById("epost").textContent = data.epost || '';
-    document.getElementById("telefon").textContent = data.telefon || 'Ikke oppgitt';
-    document.getElementById("verv").textContent = data.verv || 'Ingen';
-    document.getElementById("konto").textContent = data.konto || 'Ikke oppgitt';
-    document.getElementById("registrert").textContent = data.registrert || 'Ukjent';
-  }
-
-  window.onload = visProfil;
-</script>
+  <script>
+    function copyLink() {
+      const copyText = document.getElementById("refLink");
+      copyText.select();
+      copyText.setSelectionRange(0, 99999);
+      document.execCommand("copy");
+      alert("Lenke kopiert!");
+    }
+  </script>
+</body>
+</html>
