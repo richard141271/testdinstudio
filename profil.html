@@ -4,9 +4,52 @@
 <head>
   <meta charset="UTF-8">
   <title>Din profil</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body style="background: #121223; color: #00ffe1; text-align: center; padding: 100px; font-family: sans-serif;">
-  <h1>✅ Du er nå på profilsiden</h1>
-  <p>Alt fungerer som det skal.</p>
+<body>
+  <div class="profile-card">
+    <div class="avatar-section">
+      <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=profil" alt="Avatar" class="avatar">
+      <h2>👤 Velkommen, <span id="navn"></span>!</h2>
+      <p class="rank">💠 Rang: Nybegynner</p>
+    </div>
+
+    <div class="info">
+      <p><strong>Navn:</strong> <span id="navn-full"></span></p>
+      <p><strong>E-post:</strong> <span id="epost"></span></p>
+      <p><strong>Telefon:</strong> <span id="telefon"></span></p>
+      <p><strong>Vervet av:</strong> <span id="verver"></span></p>
+      <p><strong>Kontonummer:</strong> <span id="konto"></span></p>
+      <p><strong>Registrert:</strong> 22. mai 2025</p>
+    </div>
+
+    <div class="rewards">
+      <h3>🎁 Overraskelse på vei!</h3>
+      <p>Nedtelling til din første bonus:</p>
+      <p><strong><span id="countdown">01:00:00</span></strong></p>
+    </div>
+  </div>
+
+  <script>
+    // Hent data fra localStorage
+    document.getElementById("navn").textContent = localStorage.getItem("fornavn") || "Innovator";
+    document.getElementById("navn-full").textContent = (localStorage.getItem("fornavn") || "") + " " + (localStorage.getItem("etternavn") || "");
+    document.getElementById("epost").textContent = localStorage.getItem("epost") || "-";
+    document.getElementById("telefon").textContent = localStorage.getItem("telefon") || "-";
+    document.getElementById("verver").textContent = localStorage.getItem("verver") || "-";
+    document.getElementById("konto").textContent = localStorage.getItem("konto") || "-";
+
+    // Nedtelling
+    let sek = 3600;
+    const el = document.getElementById("countdown");
+    setInterval(() => {
+      const h = String(Math.floor(sek / 3600)).padStart(2, '0');
+      const m = String(Math.floor((sek % 3600) / 60)).padStart(2, '0');
+      const s = String(sek % 60).padStart(2, '0');
+      el.textContent = `${h}:${m}:${s}`;
+      if (sek > 0) sek--;
+    }, 1000);
+  </script>
 </body>
 </html>
