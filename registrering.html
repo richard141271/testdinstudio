@@ -24,13 +24,10 @@
   </div>
 
   <script>
-    window.onload = function() {
-      const skjema = document.getElementById("registreringsskjema");
-      skjema.onsubmit = function(e) {
-        e.preventDefault();
-        window.location.assign("profil.html");
-      };
-    };
+    document.getElementById("registreringsskjema").addEventListener("submit", function(e) {
+      e.preventDefault();
+      window.location.href = "profil.html";
+    });
   </script>
 </body>
 </html>
