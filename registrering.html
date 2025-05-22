@@ -24,11 +24,13 @@
   </div>
 
   <script>
-    document.getElementById("registreringsskjema").addEventListener("submit", function(e) {
-      e.preventDefault();
-      // Her kan data lagres til localStorage om ønsket
-      window.location.href = "profil.html";
-    });
+    window.onload = function() {
+      const skjema = document.getElementById("registreringsskjema");
+      skjema.onsubmit = function(e) {
+        e.preventDefault();
+        window.location.assign("profil.html");
+      };
+    };
   </script>
 </body>
 </html>
