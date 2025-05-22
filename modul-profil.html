@@ -1,10 +1,16 @@
-<div style="padding: 30px;">
-  <h2>👤 Din profil</h2>
-  <p><strong>Navn:</strong> <span id="profil-navn"></span></p>
-  <p><strong>E-post:</strong> <span id="profil-epost"></span></p>
-  <p><strong>Telefon:</strong> <span id="profil-telefon"></span></p>
-  <p><strong>Vervet av:</strong> <span id="profil-vervet"></span></p>
-  <p><strong>Kontonummer:</strong> <span id="profil-konto"></span></p>
-  <p><strong>Registrert:</strong> <span id="profil-dato"></span></p>
-  <button onclick="loggUt()" style="margin-top: 20px; padding: 10px 20px; background: #00ffe1; border: none; border-radius: 6px;">⚙️ Innstillinger</button>
+<!-- Ny profilside -->
+<div id="modul-profil" class="skjerm vis">
+  <div class="container">
+    <h2>👤 Din profil</h2>
+    <p><strong>Navn:</strong> <span id="profil-navn"></span></p>
+    <p><strong>E-post:</strong> <span id="profil-epost"></span></p>
+    <p><strong>Telefon:</strong> <span id="profil-telefon"></span></p>
+    <p><strong>Vervet av:</strong> <span id="profil-verv"></span></p>
+    <p><strong>Kontonummer:</strong> <span id="profil-konto"></span></p>
+    <p><strong>Registrert:</strong> <span id="profil-registrert"></span></p>
+    <br />
+    <button onclick="visModul('betaling')">💳 Gå til betaling</button>
+    <button onclick="visModul('modul-kunst')">🧠 Utforsk AI Innovate</button>
+  </div>
 </div>
+<script src="profil.js"></script>
