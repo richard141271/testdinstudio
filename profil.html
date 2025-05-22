@@ -1,0 +1,41 @@
+<!-- Ny og forbedret profilside for AI Innovate -->
+<div id="profil" class="skjerm vis">
+  <div class="container" style="max-width: 700px; margin: auto; padding: 30px; background: #101018; color: #f0f0f0; border-radius: 12px;">
+    <h2 style="color: #00ffe1; margin-bottom: 20px;">👤 Din profil</h2>
+
+    <div id="profilinfo">
+      <p><strong>Navn:</strong> <span id="navn"></span></p>
+      <p><strong>E-post:</strong> <span id="epost"></span></p>
+      <p><strong>Telefon:</strong> <span id="telefon"></span></p>
+      <p><strong>Vervet av:</strong> <span id="verv"></span></p>
+      <p><strong>Kontonummer:</strong> <span id="konto"></span></p>
+      <p><strong>Registrert:</strong> <span id="registrert"></span></p>
+    </div>
+
+    <div style="margin-top: 30px; display: flex; flex-direction: column; gap: 10px;">
+      <button onclick="visModul('betaling')" style="padding: 10px; background: #00ffe1; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; color: #000;">💳 Gå til betaling</button>
+      <button onclick="visModul('modul-kunst')" style="padding: 10px; background: #00ffe1; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; color: #000;">🎨 Utforsk AI Innovate</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function visModul(modulnavn) {
+    document.querySelectorAll(".skjerm").forEach(el => el.classList.remove("vis"));
+    document.getElementById(modulnavn).classList.add("vis");
+    if (modulnavn === "profil") visProfil();
+  }
+
+  function visProfil() {
+    const data = JSON.parse(localStorage.getItem("registrertBruker"));
+    if (!data) return;
+    document.getElementById("navn").textContent = `${data.fornavn || ''} ${data.etternavn || ''}`;
+    document.getElementById("epost").textContent = data.epost || '';
+    document.getElementById("telefon").textContent = data.telefon || 'Ikke oppgitt';
+    document.getElementById("verv").textContent = data.verv || 'Ingen';
+    document.getElementById("konto").textContent = data.konto || 'Ikke oppgitt';
+    document.getElementById("registrert").textContent = data.registrert || 'Ukjent';
+  }
+
+  window.onload = visProfil;
+</script>
