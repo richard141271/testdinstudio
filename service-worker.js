@@ -1,0 +1,1 @@
+self.addEventListener('install', e=>{e.waitUntil(caches.open('ai-innovate-cache').then(cache=>{return cache.addAll(['index.html','profil.html','kunst.html','style.css','manifest.json','icon-192.png','icon-512.png']);}));});self.addEventListener('fetch', e=>{e.respondWith(caches.match(e.request).then(resp=>resp||fetch(e.request)));});
