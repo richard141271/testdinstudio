@@ -1,21 +1,26 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const bruker = JSON.parse(localStorage.getItem("registrertBruker"));
-  if (bruker) {
-    document.getElementById("navn").textContent = bruker.fornavn + " " + bruker.etternavn;
-    document.getElementById("epost").textContent = bruker.epost;
-    document.getElementById("telefon").textContent = bruker.telefon || "-";
-    document.getElementById("vervetAv").textContent = bruker.vervetAv || "-";
-    document.getElementById("kontonummer").textContent = bruker.kontonummer || "-";
-    document.getElementById("registrert").textContent = bruker.registrert;
-  } else {
-    document.getElementById("profilData").innerHTML = "<p>Ingen brukerdata funnet. Gå til registrering først.</p>";
-  }
-});
+function lastProfil() {
+  const fornavn = localStorage.getItem('fornavn') || '';
+  const etternavn = localStorage.getItem('etternavn') || '';
+  const navnFull = `${fornavn} ${etternavn}`.trim();
 
-function loggUt() {
-  if (confirm("Er du sikker på at du vil logge ut og slette profilen din?")) {
-    localStorage.removeItem("registrertBruker");
-    window.location.hash = "#registrering";
-    visModul("modul-registrering");
-  }
+  document.getElementById('profil-navn').textContent = fornavn || 'Innovator';
+  document.getElementById('navn-full').textContent = navnFull;
+  document.getElementById('profil-epost').textContent = localStorage.getItem('epost') || '-';
+  document.getElementById('profil-telefon').textContent = localStorage.getItem('telefon') || '-';
+  document.getElementById('profil-vervet').textContent = localStorage.getItem('verver') || '-';
+  document.getElementById('profil-konto').textContent = localStorage.getItem('konto') || '-';
+  document.getElementById('profil-dato').textContent = new Date().toLocaleDateString('no-NO');
+}
+
+function startNedtelling() {
+  let sek = 3600;
+  const el = document.getElementById('countdown');
+  if (!el) return;
+  setInterval(() => {
+    const h = String(Math.floor(sek / 3600)).padStart(2, '0');
+    const m = String(Math.floor((sek % 3600) / 60)).padStart(2, '0');
+    const s = String(sek % 60).padStart(2, '0');
+    el.textContent = `${h}:${m}:${s}`;
+    if (sek > 0) sek--;
+  }, 1000);
 }

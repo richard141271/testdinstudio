@@ -1,0 +1,116 @@
+body {
+  margin: 0;
+  background: #000;
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.modul {
+  background: #131323;
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 500px;
+  margin: 40px auto;
+  box-shadow: 0 0 25px rgba(0, 255, 225, 0.1);
+}
+
+.modul h2 {
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  background: #ffffcc;
+  color: #000;
+}
+
+input[type="checkbox"] {
+  margin-top: 20px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  background: #00ffe1;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#registreringMelding {
+  margin-top: 12px;
+}
+
+a {
+  color: #00aaff;
+}
+
+.profile-card {
+  background: #131323;
+  color: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 500px;
+  margin: 40px auto;
+  box-shadow: 0 0 25px rgba(0, 255, 225, 0.15);
+  text-align: center;
+}
+
+.avatar-section img.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.profile-card h2 {
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+
+.rank {
+  color: #00ffe1;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.profile-card .info {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.profile-card .info p {
+  margin: 6px 0;
+  font-size: 16px;
+}
+
+.rewards {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.rewards h3 {
+  color: #ffcc00;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#app-bottom-menu {
+  font-size: 14px;
+}
+
+#app-bottom-menu a {
+  font-weight: bold;
+}
